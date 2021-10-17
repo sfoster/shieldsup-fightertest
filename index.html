@@ -3,29 +3,36 @@
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
     <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.1/dist/aframe-extras.min.js"></script>
-  
-    <!-- Flight? 
-    <script>
-      AFRAME.registerComponent('rig', {
-        init: function () {
-          this.tick = AFRAME.utils.throttleTick(this.tick, 33, this);
+    <script src="js/random.js"></script>
+    
+    <!-- Flight -->
+    <script type="text/javascript">
+      AFRAME.registerComponent("listener", {
+        schema: {
+          stepFactor: {
+            type: "number",
+            default: 0.05
+          }
         },
-        tick: function (time, delta) {
-          console.log("TIME " + delta);
+        tick: function() {
+          this.el.components.camera.camera.parent.position.add(
+            this.el.components.camera.camera
+              .getWorldDirection()
+              .multiplyScalar(this.data.stepFactor)
+          );
         }
-      });-->
-  
+      });
+    </script>
+    
   </head>
   <body>
     <a-scene>
-      
       <!-- The Ship -->
-      <a-entity id="rig" movement-controls="fly: true; speed: 0.3">
-        <a-entity camera position="0 1.6 0" look-controls>
-        <a-cursor></a-cursor>
+      <a-entity id="rig" movement-controls="fly: true; speed: 0.1">
+        <a-entity camera listener="stepFactor:0.01" position="0 1.6 0" look-controls>
+          <a-cursor></a-cursor>
         </a-entity>
       </a-entity>
-      
 
       <!-- The Environment -->
       <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
