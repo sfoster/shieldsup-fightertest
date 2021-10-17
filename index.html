@@ -2,19 +2,32 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v4.1.1/dist/aframe-extras.min.js"></script>
+  
+    <!-- Flight? 
+    <script>
+      AFRAME.registerComponent('rig', {
+        init: function () {
+          this.tick = AFRAME.utils.throttleTick(this.tick, 33, this);
+        },
+        tick: function (time, delta) {
+          console.log("TIME " + delta);
+        }
+      });-->
+  
   </head>
   <body>
     <a-scene>
-      <a-entity
-        camera
-        look-controls
-        wasd-controls="acceleration:100"
-        position="0 1.5 0"
-        fly="true"
-      >
+      
+      <!-- The Ship -->
+      <a-entity id="rig" movement-controls="fly: true; speed: 0.3">
+        <a-entity camera position="0 1.6 0" look-controls>
         <a-cursor></a-cursor>
+        </a-entity>
       </a-entity>
+      
 
+      <!-- The Environment -->
       <a-box position="-1 0.5 -3" rotation="0 45 0" color="#4CC3D9"></a-box>
       <a-sphere position="0 1.25 -5" radius="1.25" color="#EF2D5E"></a-sphere>
       <a-cylinder
