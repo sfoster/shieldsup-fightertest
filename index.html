@@ -79,8 +79,16 @@
       });
     </script>
   </head>
+
   <body>
     <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="rock"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FRubbishAsteroid.glb?v=1634518101527"
+        ></a-asset-item>
+      </a-assets>
+
       <!-- The Ship -->
       <a-entity id="rig" movement-controls="fly: true; speed: 0.1">
         <a-entity
@@ -109,6 +117,11 @@
         height="4"
         color="#7BC8A4"
       ></a-plane>
+      <a-gltf-model
+        src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FRubbishAsteroid.glb?v=1634518101527"
+        position="0 0 0"
+        rotation="-90 0 0"
+      ></a-gltf-model>
       <a-sky color="#ECECEC"></a-sky>
     </a-scene>
   </body>
