@@ -1,0 +1,20 @@
+{
+  "name": "fighter-test",
+  "version": "0.0.1",
+  "description": "Example app showing use of SQLite3 using the Sequelize ORM",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "sqlite3": "*",
+    "sequelize": "*"
+  },
+  "keywords": [
+    "node",
+    "express",
+    "sqlite3"
+  ],
+  "license": "MIT"
+}

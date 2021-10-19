@@ -1,8 +1,8 @@
-# A-Frame Project
+# FighterTest
 
-**[Subscribe to the A-Frame newsletter!](https://aframe.io/subscribe/)**
+**Part of an Explortation for ShieldsUp!**
 
-**[Sponsor us to help support A-Frame development and its community](https://github.com/sponsors/dmarcos)**
+**A super accessible Bridge-Sim for the Web**
 
 Built with [A-Frame](https://aframe.io), a web framework for building virtual reality experiences.
 
