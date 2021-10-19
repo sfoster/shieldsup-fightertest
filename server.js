@@ -7,7 +7,7 @@ var Sequelize = require('sequelize');
 var app = express();
 
 // default user list
-var users = [
+var asteroids = [
       ["John","Hancock"],
       ["Liz","Smith"],
       ["Ahmed","Khan"]
@@ -34,12 +34,12 @@ sequelize.authenticate()
   .then(function(err) {
     console.log('Connection has been established successfully.');
     // define a new table 'users'
-    User = sequelize.define('users', {
-      firstName: {
-        type: Sequelize.STRING
+    User = sequelize.define('asteroids', {
+      position: {
+        type: Sequelize.THREE.Vector3
       },
-      lastName: {
-        type: Sequelize.STRING
+      rotation: {
+        type: Sequelize.THREE.Vector3
       }
     });
     
@@ -54,8 +54,8 @@ function setup(){
   User.sync({force: true}) // We use 'force: true' in this example to drop the table users if it already exists, and create a new one. You'll most likely want to remove this setting in your own apps
     .then(function(){
       // Add the default users to the database
-      for(var i=0; i<users.length; i++){ // loop through all users
-        User.create({ firstName: users[i][0], lastName: users[i][1]}); // create a new entry in the users table
+      for(var i=0; i<asteroids.length; i++){ // loop through all users
+        User.create({ position: users[i][0], rotation: users[i][1]}); // create a new entry in the users table
       }
     });  
 }
