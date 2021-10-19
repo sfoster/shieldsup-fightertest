@@ -137,13 +137,12 @@
 
       <!-- The Environment -->
       <comment> Testing out OBJ models real quick
-      <a-gltf-model src="#planet" position="-100 0 -100" scale="10 10 10"></a-gltf-model>
+      
       <a-gltf-model src="#rock" position="0 0 0" scale=".5 .5 .5"></a-gltf-model>
       </comment>
       
-      <a-entity position="-100 0 -100" scale="10 10 10>
-      <a-obj-model src="#planet2o" mtl:"#planet2m"="" position="-100 0 -100" scale="10 10 10" material="ambientOcclusionMap: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_AO.png?v=1634673216209; normalMap: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_Normal.png?v=1634673218738; roughnessMap: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_Roughness.png?v=1634673180170; src: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_BaseColor.png?v=1634673064691" obj-model=""></a-></a-obj-model>
-      <a-obj-model src="#planet2o" mtl:"#planet2m"="" position="-100 0 -100" scale="10 10 10"></a-obj-model>
+      <a-entity position="-1000 0 -500" scale="100 100 100">
+      <a-gltf-model src="#planet" material=""></a-gltf-model>
       </a-entity>
                                                                                              
       <!-- Super laggy for some reason 
@@ -161,12 +160,12 @@
         src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2Fpanorama_image.png?v=1634611197961"
       ></a-sky>
 
-      <!--<a-light
+      <a-light
         type="directional"
         position="0 0 0"
         rotation="-90 0 0"
         target="#directionaltarget"
-      > -->
+      > 
         <a-entity id="directionaltarget" position="0 -1 0"></a-entity>
       </a-light>
     </a-scene>
