@@ -8,7 +8,7 @@
     <script src="js/random.js"></script>
     <!-- utility functions from the Tutorial https://hacks.mozilla.org/2018/03/immersive-aframe-low-poly/ -->
     <!-- particle systems -->
-     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
     <script>
       $ = sel => document.querySelector(sel);
       $$ = sel => document.querySelectorAll(sel);
@@ -136,19 +136,25 @@
       </a-entity>
 
       <!-- The Environment -->
-      <comment> Testing out OBJ models real quick
-      
-      <a-gltf-model src="#rock" position="0 0 0" scale=".5 .5 .5"></a-gltf-model>
-      </comment>
-      
-      <a-entity position="-1000 0 -500" scale="100 100 100">
-      <a-gltf-model src="#planet" material=""></a-gltf-model>
+
+      <a-entity>
+        <a-gltf-model
+          src="#rock"
+          position="0 0 0"
+          scale=".5 .5 .5"
+        ></a-gltf-model>
+        <a-gltf-model
+          position="-300 0 -200"
+          scale="20 20 20"
+          src="#planet"
+          material="fog: false"
+        ></a-gltf-model>
       </a-entity>
-                                                                                             
+
       <!-- Super laggy for some reason 
       <a-entity position="0 0 0" particle-system="preset: dust; texture: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FDustSpeck.png?v=1634660823690; color: #0000FF,#00FF00,#FF0000"></a-entity>
       -->
-      
+
       <!-- Attempted Asteroid Field 
       <a-entity distribute="jitter: 2 0.5 2; centerOffset: 59 -0.8 32; src:"https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FRubbishAsteroid.gltf?v=1634517502547"; radius:3"></a-entity>
       -->
@@ -165,9 +171,10 @@
         position="0 0 0"
         rotation="-90 0 0"
         target="#directionaltarget"
-      > 
-        <a-entity id="directionaltarget" position="0 -1 0"></a-entity>
+      >
+        <a-entity id="directionaltarget" position="0 -1 0"></a-entity>  light="target:  [object HTMLElement];  intensity:  2.03"
       </a-light>
+      <a-light type="ambient"></a-light>
     </a-scene>
   </body>
 </html>
