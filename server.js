@@ -55,7 +55,7 @@ function setup(){
     .then(function(){
       // Add the default users to the database
       for(var i=0; i<asteroids.length; i++){ // loop through all users
-        User.create({ position: users[i][0], rotation: users[i][1]}); // create a new entry in the users table
+        User.create({ position: asteroids[i][0], rotation: asteroids[i][1]}); // create a new entry in the users table
       }
     });  
 }
@@ -65,7 +65,7 @@ app.use(express.static('public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
 app.get("/", function (request, response) {
-  response.sendFile(__dirname + '/views/index.html');
+  response.sendFile(__dirname + '/index.html');
 });
 
 app.get("/users", function (request, response) {
