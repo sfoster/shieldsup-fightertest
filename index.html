@@ -113,6 +113,14 @@
           id="planet2m"
           src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_planet.mtl?v=1634669452429"
         ></a-asset-item>
+        <a-asset-item
+          id="ringo"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_ring.obj?v=1634673464331"
+        ></a-asset-item>
+        <a-asset-item
+          id="ringm"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_Rings.png?v=1634673473137"
+        ></a-asset-item>
       </a-assets>
 
       <!-- The Ship -->
@@ -132,8 +140,12 @@
       <a-gltf-model src="#planet" position="-100 0 -100" scale="10 10 10"></a-gltf-model>
       <a-gltf-model src="#rock" position="0 0 0" scale=".5 .5 .5"></a-gltf-model>
       </comment>
-      <a-obj-model src="#planet2o" mtl:"#planet2m" position="-100 0 -100" scale="10 10 10"></a-obj-model>
       
+      <a-entity position="-100 0 -100" scale="10 10 10>
+      <a-obj-model src="#planet2o" mtl:"#planet2m"="" position="-100 0 -100" scale="10 10 10" material="ambientOcclusionMap: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_AO.png?v=1634673216209; normalMap: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_Normal.png?v=1634673218738; roughnessMap: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_Roughness.png?v=1634673180170; src: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_BaseColor.png?v=1634673064691" obj-model=""></a-></a-obj-model>
+      <a-obj-model src="#planet2o" mtl:"#planet2m"="" position="-100 0 -100" scale="10 10 10"></a-obj-model>
+      </a-entity>
+                                                                                             
       <!-- Super laggy for some reason 
       <a-entity position="0 0 0" particle-system="preset: dust; texture: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FDustSpeck.png?v=1634660823690; color: #0000FF,#00FF00,#FF0000"></a-entity>
       -->
