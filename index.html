@@ -65,21 +65,10 @@
           src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FPlanet.gltf?v=1634667469737"
         ></a-asset-item>
         <a-asset-item
-          id="planet2o"
-          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_planet.obj?v=1634669432637"
+          id="potcruiser"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FParishCruiser.gltf?v=1635003923973"
         ></a-asset-item>
-        <a-asset-item
-          id="planet2m"
-          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_planet.mtl?v=1634669452429"
-        ></a-asset-item>
-        <a-asset-item
-          id="ringo"
-          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_ring.obj?v=1634673464331"
-        ></a-asset-item>
-        <a-asset-item
-          id="ringm"
-          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FTest_Rings.png?v=1634673473137"
-        ></a-asset-item>
+        
       </a-assets>
 
       <!-- The Ship -->
@@ -169,6 +158,15 @@
           position="-300 0 -200"
           scale="20 20 20"
           src="#planet"
+          material="fog: false"
+        ></a-gltf-model>
+        
+        <!-- Parish of Titan Cruiser-->
+        <a-gltf-model
+          position="10 10 -20"
+          rotation="0 -150 0"
+          scale="1 1 1"
+          src="#potcruiser"
           material="fog: false"
         ></a-gltf-model>
       </a-entity>
