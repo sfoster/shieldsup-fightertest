@@ -23,13 +23,15 @@
         );
       }
     </script>
-  
+
     <!-- from a SQLlite example project -->
-    <script src="https://code.jquery.com/jquery-2.2.1.min.js"
-            integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-            crossorigin="anonymous"></script>
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
     <script src="/client.js"></script>
-    
+
     <!-- Flight -->
     <script type="text/javascript">
       AFRAME.registerComponent("listener", {
@@ -95,11 +97,39 @@
       <!-- The Environment -->
 
       <a-entity>
+        <!-- Asteroid Field-->
         <a-gltf-model
           src="#rock"
           position="0 0 0"
           scale=".5 .5 .5"
+          rotation="0 0 0"
         ></a-gltf-model>
+        <a-gltf-model
+          src="#rock"
+          position="5 0 5"
+          scale=".5 .5 .5"
+          rotation="90 0 0"
+        ></a-gltf-model>
+        <a-gltf-model
+          src="#rock"
+          position="-7 0 4"
+          scale=".5 .5 .5"
+          rotation="0 0 180"
+        ></a-gltf-model>
+        <a-gltf-model
+          src="#rock"
+          position="8 0 -6"
+          scale=".5 .5 .5"
+          rotation="0 270 0"
+        ></a-gltf-model>
+        <a-gltf-model
+          src="#rock"
+          position="-4 0 -5"
+          scale=".5 .5 .5"
+          rotation="270 0 0"
+        ></a-gltf-model>
+
+        <!-- The Planet! -->
         <a-gltf-model
           position="-300 0 -200"
           scale="20 20 20"
@@ -136,4 +166,3 @@
     </a-scene>
   </body>
 </html>
-
