@@ -2,8 +2,10 @@
 <html>
   <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    
     <!-- physics and other extras -->
-    <script src="//cdn.rawgit.com/donmccurdy/aframe-extras/v3.13.1/dist/aframe-extras.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    
     <!-- alternate random number generator -->
     <script src="js/random.js"></script>
     <!-- utility functions from the Tutorial https://hacks.mozilla.org/2018/03/immersive-aframe-low-poly/ -->
@@ -68,7 +70,6 @@
           id="potcruiser"
           src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FParishCruiserV3.gltf?v=1635007163409"
         ></a-asset-item>
-        
       </a-assets>
 
       <!-- The Ship -->
@@ -88,70 +89,70 @@
       <a-entity>
         <!-- Asteroid Field-->
         <a-entity id="field1" position="0 0 0">
-        <a-gltf-model
-          src="#rock"
-          position="0 0 0"
-          scale=".5 .5 .5"
-          rotation="0 0 0"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="5 0 5"
-          scale=".5 .5 .5"
-          rotation="90 0 0"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="-7 0 4"
-          scale=".5 .5 .5"
-          rotation="0 0 180"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="8 0 -6"
-          scale=".5 .5 .5"
-          rotation="0 270 0"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="-4 0 -5"
-          scale=".5 .5 .5"
-          rotation="270 0 0"
-        ></a-gltf-model>
-          </a-entity>
-        
+          <a-gltf-model
+            src="#rock"
+            position="0 0 0"
+            scale=".5 .5 .5"
+            rotation="0 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="5 0 5"
+            scale=".5 .5 .5"
+            rotation="90 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-7 0 4"
+            scale=".5 .5 .5"
+            rotation="0 0 180"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="8 0 -6"
+            scale=".5 .5 .5"
+            rotation="0 270 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-4 0 -5"
+            scale=".5 .5 .5"
+            rotation="270 0 0"
+          ></a-gltf-model>
+        </a-entity>
+
         <a-entity id="field2" position="0 0 -15">
-        <a-gltf-model
-          src="#rock"
-          position="0 0 0"
-          scale=".5 .5 .5"
-          rotation="0 0 0"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="5 0 5"
-          scale=".5 .5 .5"
-          rotation="90 0 0"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="-7 0 4"
-          scale=".5 .5 .5"
-          rotation="0 0 180"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="8 0 -6"
-          scale=".5 .5 .5"
-          rotation="0 270 0"
-        ></a-gltf-model>
-        <a-gltf-model
-          src="#rock"
-          position="-4 0 -5"
-          scale=".5 .5 .5"
-          rotation="270 0 0"
-        ></a-gltf-model>
-          </a-entity>
+          <a-gltf-model
+            src="#rock"
+            position="0 0 0"
+            scale=".5 .5 .5"
+            rotation="0 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="5 0 5"
+            scale=".5 .5 .5"
+            rotation="90 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-7 0 4"
+            scale=".5 .5 .5"
+            rotation="0 0 180"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="8 0 -6"
+            scale=".5 .5 .5"
+            rotation="0 270 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-4 0 -5"
+            scale=".5 .5 .5"
+            rotation="270 0 0"
+          ></a-gltf-model>
+        </a-entity>
 
         <!-- The Planet! -->
         <a-gltf-model
@@ -160,7 +161,7 @@
           src="#planet"
           material="fog: false"
         ></a-gltf-model>
-        
+
         <!-- Parish of Titan Cruiser-->
         <a-gltf-model
           position="10 10 -20"
