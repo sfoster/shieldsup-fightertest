@@ -6,6 +6,9 @@
 
 Built with [A-Frame](https://aframe.io), a web framework for building virtual reality experiences.
 
-Make WebVR with HTML and Entity-Component. Works on Vive, Rift, Quest, desktop, mobile platforms.
+Started building from https://hacks.mozilla.org/2018/03/immersive-aframe-low-poly/ and then wanted to try loading objects
+from a database rather than randomly scattering objects.
 
-Click and drag on desktop. Open it on a smartphone and use the device motion sensors. Or [plug in a VR headset](https://aframe.io/docs/0.8.0/introduction/vr-headsets-and-webvr-browsers.html)!
+I started copying a bunch of stuff from https://glitch.com/edit/#!/sqlite3-db to try and get that functionality.
+
+This is mostly a toy for testing various functionality.
