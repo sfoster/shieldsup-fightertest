@@ -70,6 +70,10 @@
           id="potcruiser"
           src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FParishCruiserV3.gltf?v=1635007163409"
         ></a-asset-item>
+        <a-asset-item
+          id="arwing"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FArwing.gltf?v=1637369756460"
+        ></a-asset-item>
       </a-assets>
 
       <!-- The Ship -->
@@ -168,6 +172,15 @@
           rotation="0 -150 0"
           scale="1 1 1"
           src="#potcruiser"
+          material="fog: false"
+        ></a-gltf-model>
+        
+        <!-- Arwing loading!-->
+        <a-gltf-model
+          position="10 20 20"
+          rotation="0 0 0"
+          scale="1 1 1"
+          src="#arwing"
           material="fog: false"
         ></a-gltf-model>
       </a-entity>
