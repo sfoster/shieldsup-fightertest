@@ -1,17 +1,16 @@
 .btn-group button {
   width: 200px;
-  height: 100px;
+  height: 30px;
   bottom: calc(100%);
   left: calc(100%);
   position: relative;
   background-color: #FFD27C; /* background */
   border: 1px solid #E4AB00; /* border */
   color: rgb(0,0,0); /*text */
-  padding: 10px 24px; /* Some padding */
   cursor: pointer; /* Pointer/hand icon */
   float: left; /* Float the buttons side by side */
   z-index: 9999;
-  font-size: 30px;
+  font-size: 20px;
   text-align: center;
 }
 
