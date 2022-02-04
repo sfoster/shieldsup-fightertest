@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
+    <meta charset="utf-8" />
     <title>FighterTest</title>
-    <meta name="ShieldsUp!" content="pewpew!">
-    <link rel="stylesheet" href="style.css">
+    <meta name="ShieldsUp!" content="pewpew!" />
+    <link rel="stylesheet" href="style.css" />
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    
-    
+
     <!-- physics and other extras -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+
+    <!-- trails to show movement! -->
+    <script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-trail-component@v1.0.0/aframe-trail-component.min.js"></script>
     
     <!-- alternate random number generator -->
     <script src="js/random.js"></script>
@@ -17,8 +19,8 @@
     <!-- particle systems -->
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
     <script>
-      $ = sel => document.querySelector(sel);
-      $$ = sel => document.querySelectorAll(sel);
+      $ = (sel) => document.querySelector(sel);
+      $$ = (sel) => document.querySelectorAll(sel);
       on = (elem, type, hand) => elem.addEventListener(type, hand);
     </script>
 
@@ -45,26 +47,29 @@
         schema: {
           stepFactor: {
             type: "number",
-            default: 0.05
-          }
+            default: 0.05,
+          },
         },
-        tick: function() {
+        tick: function () {
           this.el.components.camera.camera.parent.position.add(
             this.el.components.camera.camera
               .getWorldDirection()
               .multiplyScalar(this.data.stepFactor)
           );
-        }
+        },
       });
     </script>
-    
   </head>
 
   <!-- Asset List -->
   <body>
-    <div class="btn-group" style="width:50%">
-      <button class="btn-group" style="width:50%"><a href="https://www.patreon.com/shieldsup">ShieldsUp!</a></button>
-      <button class="btn-group" style="width:50%"><a href="https://epb.glitch.me">EPB</a></button>
+    <div class="btn-group" style="width: 50%">
+      <button class="btn-group" style="width: 50%">
+        <a href="https://www.patreon.com/shieldsup">ShieldsUp!</a>
+      </button>
+      <button class="btn-group" style="width: 50%">
+        <a href="https://epb.glitch.me">EPB</a>
+      </button>
     </div>
     <a-scene>
       <a-assets>
@@ -86,14 +91,26 @@
         ></a-asset-item>
       </a-assets>
 
-<!-- The Ship -->
-      <a-entity id="rig" movement-controls="fly: true; speed: 0.1">
+      <!-- The Ship -->
+      <a-entity
+        id="rig"
+        position="0 0 0"
+        rotation="0 0 0"
+        movement-controls="fly: true; speed: 0.1"
+      >
         <a-entity
           camera
           listener="stepFactor:0.01"
           position="0 1.6 10"
           look-controls
         >
+          <a-gltf-model
+          position="0 -.3 -1"
+          rotation="0 180 0"
+          scale=".1 .1 .1"
+          src="#arwing"
+          material="fog: false"
+        ></a-gltf-model>
           <a-cursor></a-cursor>
         </a-entity>
       </a-entity>
@@ -184,7 +201,7 @@
           src="#potcruiser"
           material="fog: false"
         ></a-gltf-model>
-        
+
         <!-- Arwing loading!-->
         <a-gltf-model
           position="10 20 20"
