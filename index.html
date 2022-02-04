@@ -13,6 +13,9 @@
     <!-- trails to show movement! -->
     <script src="https://cdn.jsdelivr.net/gh/EricEisaman/aframe-trail-component@v1.0.0/aframe-trail-component.min.js"></script>
     
+    <!-- lerp movement? -->
+    <script src="https://unpkg.com/aframe-lerp-component/dist/aframe-lerp-component.min.js"></script>
+    
     <!-- alternate random number generator -->
     <script src="js/random.js"></script>
     <!-- utility functions from the Tutorial https://hacks.mozilla.org/2018/03/immersive-aframe-low-poly/ -->
@@ -110,7 +113,9 @@
           scale=".1 .1 .1"
           src="#arwing"
           material="fog: false"
-        ></a-gltf-model>
+          lerp="duration: 100; properties: position, rotation, scale"
+          >
+        </a-gltf-model>
           <a-cursor></a-cursor>
         </a-entity>
       </a-entity>
