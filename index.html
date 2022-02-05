@@ -10,9 +10,6 @@
     <!-- physics and other extras -->
     <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
 
-    <!-- Physics -->
-    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script>
-    
     <!-- particle systems -->
     <script src="https://unpkg.com/aframe-particle-system-component@1.0.x/dist/aframe-particle-system-component.min.js"></script>
     <script>
@@ -93,18 +90,18 @@
           position="0 1.6 10"
           look-controls
         >
+          <a-cursor></a-cursor>
           <a-gltf-model
-          position="0 -.3 -1"
+          position="0 -.25 -.5"
           rotation="0 180 0"
           scale=".1 .1 .1"
           src="#arwing"
           material="fog: false"
-          lerp="duration: 100; properties: position, rotation, scale"
           >
         </a-gltf-model>
-          <a-cursor></a-cursor>
         </a-entity>
       </a-entity>
+      
 
       <!-- The Environment -->
 
