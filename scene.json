@@ -1,0 +1,266 @@
+{
+  "assets": [
+    {
+      "id": "rock",
+      "src": "https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FRubbishAsteroid.glb?v=1634518101527"
+    },
+    {
+      "id": "planet",
+      "src": "https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FPlanet.gltf?v=1634667469737"
+    },
+    {
+      "id": "potcruiser",
+      "src": "https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FParishCruiserV3.gltf?v=1635007163409"
+    },
+    {
+      "id": "arwing",
+      "src": "https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FArwing.gltf?v=1637369756460"
+    }
+  ],
+  "entities": [
+    {
+      "a-type": "entity",
+      "id": "rig",
+      "position": "0 0 0",
+      "rotation": "0 0 0",
+      "movement-controls": "fly: true; speed: 0.1",
+      "gamepad-controls": "",
+      "trackpad-controls": "",
+      "keyboard-controls": "",
+      "touch-controls": "",
+      "a-path": "#rig"
+    },
+    {
+      "a-type": "entity",
+      "camera": "",
+      "listener": "stepFactor:0.01",
+      "position": "0 1.6 10",
+      "look-controls": "",
+      "rotation": "",
+      "id": "e-309564540296829",
+      "a-path": "#rig > #e-309564540296829",
+      "parentId": "rig"
+    },
+    {
+      "a-type": "cursor",
+      "material": "",
+      "raycaster": "",
+      "cursor": "",
+      "geometry": "",
+      "position": "",
+      "id": "e-636464547247480",
+      "a-path": "#rig > #e-309564540296829 > #e-636464547247480",
+      "parentId": "e-309564540296829"
+    },
+    {
+      "a-type": "gltf-model",
+      "position": "0 -.25 -.75",
+      "rotation": "0 180 0",
+      "scale": ".1 .1 .1",
+      "src": "#arwing",
+      "material": "fog: false",
+      "gltf-model": "",
+      "id": "e-1512287296079489",
+      "a-path": "#rig > #e-309564540296829 > #e-1512287296079489",
+      "parentId": "e-309564540296829"
+    },
+    {
+      "a-type": "entity",
+      "id": "e-396104752858981",
+      "a-path": "#e-396104752858981"
+    },
+    {
+      "a-type": "entity",
+      "id": "field1",
+      "position": "0 0 0",
+      "a-path": "#e-396104752858981 > #field1",
+      "parentId": "e-396104752858981"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "0 0 0",
+      "scale": ".5 .5 .5",
+      "rotation": "0 0 0",
+      "gltf-model": "",
+      "id": "e-1140303303083931",
+      "a-path": "#e-396104752858981 > #field1 > #e-1140303303083931",
+      "parentId": "field1"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "5 0 5",
+      "scale": ".5 .5 .5",
+      "rotation": "90 0 0",
+      "gltf-model": "",
+      "id": "e-1093045612419009",
+      "a-path": "#e-396104752858981 > #field1 > #e-1093045612419009",
+      "parentId": "field1"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "-7 0 4",
+      "scale": ".5 .5 .5",
+      "rotation": "0 0 180",
+      "gltf-model": "",
+      "id": "e-727994085863472",
+      "a-path": "#e-396104752858981 > #field1 > #e-727994085863472",
+      "parentId": "field1"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "8 0 -6",
+      "scale": ".5 .5 .5",
+      "rotation": "0 270 0",
+      "gltf-model": "",
+      "id": "e-1022422924740170",
+      "a-path": "#e-396104752858981 > #field1 > #e-1022422924740170",
+      "parentId": "field1"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "-4 0 -5",
+      "scale": ".5 .5 .5",
+      "rotation": "270 0 0",
+      "gltf-model": "",
+      "id": "e-1618725678319496",
+      "a-path": "#e-396104752858981 > #field1 > #e-1618725678319496",
+      "parentId": "field1"
+    },
+    {
+      "a-type": "entity",
+      "id": "field2",
+      "position": "0 0 -15",
+      "a-path": "#e-396104752858981 > #field2",
+      "parentId": "e-396104752858981"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "0 0 0",
+      "scale": ".5 .5 .5",
+      "rotation": "0 0 0",
+      "gltf-model": "",
+      "id": "e-430077276211518",
+      "a-path": "#e-396104752858981 > #field2 > #e-430077276211518",
+      "parentId": "field2"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "5 0 5",
+      "scale": ".5 .5 .5",
+      "rotation": "90 0 0",
+      "gltf-model": "",
+      "id": "e-10772873261950",
+      "a-path": "#e-396104752858981 > #field2 > #e-10772873261950",
+      "parentId": "field2"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "-7 0 4",
+      "scale": ".5 .5 .5",
+      "rotation": "0 0 180",
+      "gltf-model": "",
+      "id": "e-279724399453990",
+      "a-path": "#e-396104752858981 > #field2 > #e-279724399453990",
+      "parentId": "field2"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "8 0 -6",
+      "scale": ".5 .5 .5",
+      "rotation": "0 270 0",
+      "gltf-model": "",
+      "id": "e-859971864746236",
+      "a-path": "#e-396104752858981 > #field2 > #e-859971864746236",
+      "parentId": "field2"
+    },
+    {
+      "a-type": "gltf-model",
+      "src": "#rock",
+      "position": "-4 0 -5",
+      "scale": ".5 .5 .5",
+      "rotation": "270 0 0",
+      "gltf-model": "",
+      "id": "e-603155305642954",
+      "a-path": "#e-396104752858981 > #field2 > #e-603155305642954",
+      "parentId": "field2"
+    },
+    {
+      "a-type": "gltf-model",
+      "position": "-300 0 -200",
+      "scale": "20 20 20",
+      "src": "#planet",
+      "material": "fog: false",
+      "gltf-model": "",
+      "id": "e-563427698540505",
+      "a-path": "#e-396104752858981 > #e-563427698540505",
+      "parentId": "e-396104752858981"
+    },
+    {
+      "a-type": "gltf-model",
+      "position": "10 10 -20",
+      "rotation": "0 -150 0",
+      "scale": "1 1 1",
+      "src": "#potcruiser",
+      "material": "fog: false",
+      "gltf-model": "",
+      "id": "e-357213482752215",
+      "a-path": "#e-396104752858981 > #e-357213482752215",
+      "parentId": "e-396104752858981"
+    },
+    {
+      "a-type": "gltf-model",
+      "position": "10 20 20",
+      "rotation": "0 0 0",
+      "scale": "1 1 1",
+      "src": "#arwing",
+      "material": "fog: false",
+      "gltf-model": "",
+      "id": "e-110777328454568",
+      "a-path": "#e-396104752858981 > #e-110777328454568",
+      "parentId": "e-396104752858981"
+    },
+    {
+      "a-type": "sky",
+      "id": "sky",
+      "rotation": "0 180 0",
+      "src": "https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2Fpanorama_image.png?v=1634611197961",
+      "material": "",
+      "geometry": "",
+      "scale": "",
+      "a-path": "#sky"
+    },
+    {
+      "a-type": "light",
+      "type": "directional",
+      "intensity": "2",
+      "position": "0 0 0",
+      "target": "#directionaltarget",
+      "light": "",
+      "id": "e-183735767488870",
+      "a-path": "#e-183735767488870"
+    },
+    {
+      "a-type": "entity",
+      "id": "directionaltarget",
+      "position": "0 -1 0",
+      "a-path": "#e-183735767488870 > #directionaltarget",
+      "parentId": "e-183735767488870"
+    },
+    {
+      "a-type": "light",
+      "type": "ambient",
+      "light": "",
+      "id": "e-1639636158489686",
+      "a-path": "#e-1639636158489686"
+    }
+  ]
+}

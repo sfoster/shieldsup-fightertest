@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>FighterTest</title>
+    <meta name="ShieldsUp!" content="pewpew!" />
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+
+    <!-- physics and other extras -->
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
+    <!-- physics -->
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script>
+
+    <!-- from a SQLlite example project -->
+    <script
+      src="https://code.jquery.com/jquery-2.2.1.min.js"
+      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
+      crossorigin="anonymous"
+    ></script>
+    <script src="/client.js"></script>
+
+    <!-- Flight -->
+    <script type="text/javascript">
+      AFRAME.registerComponent("listener", {
+        schema: {
+          stepFactor: {
+            type: "number",
+            default: 0.05,
+          },
+        },
+        tick: function () {
+          this.el.components.camera.camera.parent.position.add(
+            this.el.components.camera.camera
+              .getWorldDirection()
+              .multiplyScalar(this.data.stepFactor)
+          );
+        },
+      });
+    </script>
+  </head>
+
+  <!-- Asset List -->
+  <body>
+<script>
+  var sceneData = {
+    assets: [],
+    entities: [],
+  };
+
+  function generateId(elem) {
+    return "e-"+Math.floor(Math.random() * Date.now() * 1000);
+  }
+
+  function generatePath(elem) {
+    let parts = [];
+    while (elem && elem.localName != "a-scene") {
+      parts.unshift(elem.id ? `#${elem.id}` : elem.localName);
+      elem = elem.parentNode;
+    }
+    return parts.join(" > ");
+  }
+
+  function visitElement(elem, parentElem) {
+    let match = elem.localName.match(/^a-(.+)/);
+    if (match) {
+      let entity = {
+        "a-type": match[1]
+      };
+      for (let attr of elem.attributes) {
+        entity[attr.name] = attr.value;
+      }
+      if (!entity.id) {
+        entity.id = elem.id = generateId(elem);
+      }
+      entity["a-path"] = generatePath(elem);
+      if (parentElem && parentElem.id) {
+        entity.parentId = parentElem.id;
+      }
+      console.log("adding entity: ", entity);
+      sceneData.entities.push(entity);
+    }
+    if (elem.childElementCount) {
+      for (child of elem.children) {
+        visitElement(child, elem);
+      }
+    }
+  }
+
+  function visitAssets(elem) {
+    console.log("visitAssets:", elem.childElementCount);
+    for (let assetItem of elem.children) {
+      sceneData.assets.push({
+        id: assetItem.id || generateId(elem),
+        src: assetItem.getAttribute("src"),
+      });
+      console.log("Adding asset:", sceneData.assets[sceneData.assets.length-1]);
+    }
+  }
+
+  function walkScene() {
+    let sceneElem = document.querySelector("a-scene");
+    for (let child of sceneElem.children) {
+      console.log("visiting scene child", child);
+      if (child.localName == "a-assets") {
+        visitAssets(child);
+      } else {
+        visitElement(child);
+      }
+    }
+    console.log(sceneData);
+  }
+</script>    
+    <a-scene>
+      <a-assets>
+        <a-asset-item
+          id="rock"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FRubbishAsteroid.glb?v=1634518101527"
+        ></a-asset-item>
+        <a-asset-item
+          id="planet"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FPlanet.gltf?v=1634667469737"
+        ></a-asset-item>
+        <a-asset-item
+          id="potcruiser"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FParishCruiserV3.gltf?v=1635007163409"
+        ></a-asset-item>
+        <a-asset-item
+          id="arwing"
+          src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FArwing.gltf?v=1637369756460"
+        ></a-asset-item>
+      </a-assets>
+
+      <!-- The Ship -->
+      <a-entity
+        id="rig"
+        position="0 0 0"
+        rotation="0 0 0"
+        movement-controls="fly: true; speed: 0.1"
+      >
+        <a-entity
+          camera
+          listener="stepFactor:0.01"
+          position="0 1.6 10"
+          look-controls
+        >
+          <a-cursor></a-cursor>
+          <a-gltf-model
+          position="0 -.25 -.75"
+          rotation="0 180 0"
+          scale=".1 .1 .1"
+          src="#arwing"
+          material="fog: false"
+          ></a-gltf-model>
+        </a-entity>
+      </a-entity>
+      
+
+      <!-- The Environment -->
+
+      <a-entity>
+        <!-- Asteroid Field-->
+        <a-entity id="field1" position="0 0 0">
+          <a-gltf-model
+            src="#rock"
+            position="0 0 0"
+            scale=".5 .5 .5"
+            rotation="0 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="5 0 5"
+            scale=".5 .5 .5"
+            rotation="90 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-7 0 4"
+            scale=".5 .5 .5"
+            rotation="0 0 180"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="8 0 -6"
+            scale=".5 .5 .5"
+            rotation="0 270 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-4 0 -5"
+            scale=".5 .5 .5"
+            rotation="270 0 0"
+          ></a-gltf-model>
+        </a-entity>
+
+        <a-entity id="field2" position="0 0 -15">
+          <a-gltf-model
+            src="#rock"
+            position="0 0 0"
+            scale=".5 .5 .5"
+            rotation="0 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="5 0 5"
+            scale=".5 .5 .5"
+            rotation="90 0 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-7 0 4"
+            scale=".5 .5 .5"
+            rotation="0 0 180"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="8 0 -6"
+            scale=".5 .5 .5"
+            rotation="0 270 0"
+          ></a-gltf-model>
+          <a-gltf-model
+            src="#rock"
+            position="-4 0 -5"
+            scale=".5 .5 .5"
+            rotation="270 0 0"
+          ></a-gltf-model>
+        </a-entity>
+
+        <!-- The Planet! -->
+        <a-gltf-model
+          position="-300 0 -200"
+          scale="20 20 20"
+          src="#planet"
+          material="fog: false"
+        ></a-gltf-model>
+
+        <!-- Parish of Titan Cruiser-->
+        <a-gltf-model
+          position="10 10 -20"
+          rotation="0 -150 0"
+          scale="1 1 1"
+          src="#potcruiser"
+          material="fog: false"
+        ></a-gltf-model>
+
+        <!-- Arwing loading!-->
+        <a-gltf-model
+          position="10 20 20"
+          rotation="0 0 0"
+          scale="1 1 1"
+          src="#arwing"
+          material="fog: false"
+        ></a-gltf-model>
+      </a-entity>
+
+      <!-- Super laggy for some reason 
+      <a-entity position="0 0 0" particle-system="preset: dust; texture: https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FDustSpeck.png?v=1634660823690; color: #0000FF,#00FF00,#FF0000"></a-entity>
+      -->
+
+      <!-- Attempted Asteroid Field 
+      <a-entity distribute="jitter: 2 0.5 2; centerOffset: 59 -0.8 32; src:"https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2FRubbishAsteroid.gltf?v=1634517502547"; radius:3"></a-entity>
+      -->
+
+      <!-- pretty sky, cause why not! -->
+      <a-sky
+        id="sky"
+        rotation="0 180 0"
+        src="https://cdn.glitch.me/e99f4064-e398-48d8-882b-d24a844fbb01%2Fpanorama_image.png?v=1634611197961"
+      ></a-sky>
+
+      <a-light
+        type="directional"
+        intensity="2"
+        position="0 0 0"
+        target="#directionaltarget"
+      >
+        <a-entity id="directionaltarget" position="0 -1 0"></a-entity>
+      </a-light>
+      <a-light type="ambient"></a-light>
+    </a-scene>
+  </body>
+</html>
