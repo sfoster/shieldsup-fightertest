@@ -12,14 +12,6 @@
     <!-- physics -->
     <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v$npm_package_version/dist/aframe-physics-system.min.js"></script>
 
-    <!-- from a SQLlite example project -->
-    <script
-      src="https://code.jquery.com/jquery-2.2.1.min.js"
-      integrity="sha256-gvQgAFzTH6trSrAWoH1iPo9Xc96QxSZ3feW6kem+O00="
-      crossorigin="anonymous"
-    ></script>
-    <script src="/client.js"></script>
-
     <!-- Flight -->
     <script type="text/javascript">
       AFRAME.registerComponent("listener", {
@@ -43,10 +35,7 @@
   <!-- Asset List -->
   <body>
 <script>
-  var sceneData = {
-    assets: [],
-    entities: [],
-  };
+  var sceneData = null;
 
   function generateId(elem) {
     return "e-"+Math.floor(Math.random() * Date.now() * 1000);
@@ -99,6 +88,10 @@
   }
 
   function walkScene() {
+    sceneData = {
+      assets: [],
+      entities: [],
+    };
     let sceneElem = document.querySelector("a-scene");
     for (let child of sceneElem.children) {
       console.log("visiting scene child", child);
@@ -108,8 +101,28 @@
         visitElement(child);
       }
     }
-    console.log(sceneData);
+    return sceneData;
   }
+
+  window.addEventListener("DOMContentLoaded", () => {
+    const downloadEl = document.createElement("a");
+    downloadEl.style = "cursor: pointer; position:absolute; top: 5px; right: 5px; padding: 4px 8px; background-color: white; border: 1px outset";
+    downloadEl.textContent = "Serialize scene";
+    document.body.appendChild(downloadEl);
+    
+    downloadEl.addEventListener("click", (event) => {
+      if (downloadEl.hasAttribute("download")) {
+        el.textContent = "Serialize scene";
+        el.removeAttribute('download');
+      } else {
+        event.preventDefault();
+        let dataStr = JSON.stringify(walkScene(), null, 2);
+        downloadEl.setAttribute('href', 'data:text/json;charset=utf-8,' + encodeURIComponent(dataStr));
+        downloadEl.setAttribute('download', 'scene.json');
+        downloadEl.textContent = "Download scene.json";
+      }
+    });
+  })
 </script>    
     <a-scene>
       <a-assets>
