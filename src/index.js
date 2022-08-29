@@ -1,10 +1,28 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, onAuthStateChanged, getRedirectResult } from 'firebase/auth';
-import config from './config';
+import { getAuth, onAuthStateChanged, getRedirectResult, connectAuthEmulator } from 'firebase/auth';
+import {
+  getFirestore, connectFirestoreEmulator,
+  doc,
+  addDoc,
+  setDoc,
+  collection,
+  query,
+  getDoc,
+  getDocs,
+  where,
+  onSnapshot
+} from "firebase/firestore";
 
-const firebaseApp = initializeApp(config.firebaseConfig);
-const auth = getAuth(firebaseApp);
+import { firebaseConfig, inEmulation, firebaseEmulators } from './config';
 
+const firebaseApp = initializeApp(firebaseConfig);
+console.log("got firebaseApp:", firebaseApp, firebaseConfig);
+
+const db = getFirestore(firebaseApp);
+connectFirestoreEmulator(db, firebaseEmulators.firestore.host, firebaseEmulators.firestore.port);
+
+const auth = getAuth();
+connectAuthEmulator(auth, `https://${firebaseEmulators.auth.host}:${firebaseEmulators.auth.port}`);
 
 function addAssets(assetsList) {
   let sceneElem = document.querySelector("a-scene");
@@ -37,7 +55,7 @@ function addEntities(entityList) {
         parentNode = document.getElementById(entity.parentId);
       }
       if (!parentNode) {
-        console.warn("Missing parentNode for child", entity, entity.parentId);
+        console.warn("Missing parentNode for child", entity["a-path"], entity.parentId);
         continue;
       }
     } else {
@@ -56,25 +74,31 @@ function addEntities(entityList) {
   }
 }
 
-function thawScene(sceneData) {
-  addAssets(sceneData.assets);
+async function initScene(sceneData) {
+  console.log("Querying for assets....");
+  const assetsSnapshot = await getDocs(collection(db, "assets"));
+  const entitiesSnapshot = await getDocs(collection(db, "entities"));
 
+  let remoteAssets = assetsSnapshot.docs.map(doc => doc.data());
+  addAssets(remoteAssets);
+
+  let remoteEntities = entitiesSnapshot.docs.map(doc => doc.data());
+  console.log("remoteEntities:", remoteEntities);
   let sortedEntities = window.sortedEntities = [];
-  for (let entity of sceneData.entities) {
-    if (!entity.depth) {
-      entity._depth = entity.id.split(" > ").length;
+  for (let entity of remoteEntities) {
+    if (!entity._depth) {
+      entity._depth = entity["a-path"].split(" > ").length;
     }
     sortedEntities.push(entity);
   }
   sortedEntities.sort((a, b) => {
     return a._depth > b._depth;
   });
+  console.log("sortedEntities:", sortedEntities);
   addEntities(sortedEntities);
 }
 
 window.addEventListener("DOMContentLoaded", async () => {
-  let resp = await fetch("./scene.json");
-  let data = await resp.json();
-  thawScene(data);
+  initScene();
 });
 

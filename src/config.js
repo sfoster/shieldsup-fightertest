@@ -12,8 +12,9 @@ let firebaseEmulators;
 if (inEmulation) {
   firebaseConfig = {
     apiKey: "fake-api-key",
-    projectId: "fake-fightertest",
+    projectId: "fightertest",
   }
+  console.log("inEmulation, firebaseConfig:", firebaseConfig);
   firebaseEmulators = {
     "auth": {
       "host": "localhost",
@@ -26,7 +27,7 @@ if (inEmulation) {
   };
 }
 
-export default {
+export {
   firebaseConfig,
   firebaseEmulators,
   inEmulation,
