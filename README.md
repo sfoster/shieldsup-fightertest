@@ -8,7 +8,7 @@ Built with [A-Frame](https://aframe.io), a web framework for building virtual re
 
 Started building from https://hacks.mozilla.org/2018/03/immersive-aframe-low-poly/.
 
-## dist/sceneFromJSON.html 
+## dist/serializeScene.html 
 
 Takes the initial FighterTest demo and adds a function to export all the a-frame entities and assets as a JSON structure.
 Load the page and click the "Serialize scene" link/button in the top right of the page to take a snapshot, and click again to download the serialized .json file with the assets and entities it found in the `<a -scene>`.
