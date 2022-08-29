@@ -1,3 +1,11 @@
+import { initializeApp } from 'firebase/app';
+import { getAuth, onAuthStateChanged, getRedirectResult } from 'firebase/auth';
+import config from './config';
+
+const firebaseApp = initializeApp(config.firebaseConfig);
+const auth = getAuth(firebaseApp);
+
+
 function addAssets(assetsList) {
   let sceneElem = document.querySelector("a-scene");
   let frag = document.createDocumentFragment();
@@ -52,7 +60,7 @@ function thawScene(sceneData) {
   addAssets(sceneData.assets);
 
   let sortedEntities = window.sortedEntities = [];
-  for (entity of sceneData.entities) {
+  for (let entity of sceneData.entities) {
     if (!entity.depth) {
       entity._depth = entity.id.split(" > ").length;
     }
